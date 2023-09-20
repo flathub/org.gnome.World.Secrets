@@ -7,8 +7,8 @@
     "sources": [
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/76/02/e29e09741cfe63ce6dbb55394024b8df7f4ffb8d9ad4a53a935feb58b28f/pykeepass-4.0.3.tar.gz",
-            "sha256": "677095f700e7f1445dd31fa43863462979e7d360aee2529e72cc216003fd7ab5"
+            "url": "https://files.pythonhosted.org/packages/da/fc/c18840739e2a3b0cac6d2adeda6518f3336cc7b7db52bf5ebb7c37497a12/pykeepass-4.0.6.tar.gz",
+            "sha256": "d19cc8349084e4b37eb2d9338f5fde99611c4184fa9d71d31d796356488ef548"
         }
     ],
     "modules": [
