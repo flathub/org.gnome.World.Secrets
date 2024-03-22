@@ -1,0 +1,47 @@
+From d64e4663ad9c276d0223adf6634b58635cd27d0e Mon Sep 17 00:00:00 2001
+From: Maximiliano Sandoval <msandova@gnome.org>
+Date: Thu, 21 Mar 2024 18:40:35 +0100
+Subject: [PATCH 2/3] safe_element: Add broad exceptions
+
+This is not idea, but we cannot crash here.
+---
+ gsecrets/safe_element.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/gsecrets/safe_element.py b/gsecrets/safe_element.py
+index 107f7cc2..72041391 100644
+--- a/gsecrets/safe_element.py
++++ b/gsecrets/safe_element.py
+@@ -333,6 +333,9 @@ class SafeElement(GObject.Object):
+         except OverflowError:
+             logging.error("Accessed time for %s overflows", self.name)
+             return None
++        except Exception as err:  # pylint: disable=broad-except
++            logging.error("Could not read accessed time: %s", str(err))
++            return None
+ 
+         if not time:
+             return None
+@@ -353,6 +356,9 @@ class SafeElement(GObject.Object):
+         except OverflowError:
+             logging.error("Creation time for %s overflows", self.name)
+             return None
++        except Exception as err:  # pylint: disable=broad-except
++            logging.error("Could not read creation time: %s", str(err))
++            return None
+ 
+         if not time:
+             return None
+@@ -373,6 +379,9 @@ class SafeElement(GObject.Object):
+         except OverflowError:
+             logging.error("Modified time for %s overflows", self.name)
+             return None
++        except Exception as err:  # pylint: disable=broad-except
++            logging.error("Could not read modified time: %s", str(err))
++            return None
+ 
+         if not time:
+             return None
+-- 
+2.44.0
+
