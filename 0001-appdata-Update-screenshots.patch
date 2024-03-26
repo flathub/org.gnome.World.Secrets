@@ -1,0 +1,45 @@
+From fd53fd5e4e44ae95dcd52155df2886186a766006 Mon Sep 17 00:00:00 2001
+From: Maximiliano Sandoval <msandova@gnome.org>
+Date: Wed, 27 Mar 2024 19:08:29 +0100
+Subject: [PATCH] appdata: Update screenshots
+
+---
+ .../org.gnome.World.Secrets.metainfo.xml.in.in | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/data/org.gnome.World.Secrets.metainfo.xml.in.in b/data/org.gnome.World.Secrets.metainfo.xml.in.in
+index faeece76..bed6e3a8 100644
+--- a/data/org.gnome.World.Secrets.metainfo.xml.in.in
++++ b/data/org.gnome.World.Secrets.metainfo.xml.in.in
+@@ -262,22 +262,16 @@
+   </releases>
+   <screenshots>
+     <screenshot type="default">
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/browser.png</image>
++      <caption>Password management</caption>
++      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/screenshot-1.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/entry.png</image>
++      <caption>Safe unlocking</caption>
++      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/screenshot-2.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/start.png</image>
+-    </screenshot>
+-    <screenshot>
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/unlock.png</image>
+-    </screenshot>
+-    <screenshot>
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/search.png</image>
+-    </screenshot>
+-    <screenshot>
+-      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/edit.png</image>
++      <caption>Safe creation</caption>
++      <image>https://gitlab.gnome.org/World/secrets/-/raw/master/screenshots/screenshot-3.png</image>
+     </screenshot>
+   </screenshots>
+   <translation type="gettext">@GETTEXT_PACKAGE@</translation>
+-- 
+2.44.0
+

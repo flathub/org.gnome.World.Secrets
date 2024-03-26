@@ -2,13 +2,17 @@
     "name": "python3-pykeepass",
     "buildsystem": "simple",
     "build-commands": [
-        "pip3 install --no-index --no-build-isolation --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pykeepass"
+        "pip3 install --no-index --no-build-isolation --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} ."
     ],
     "sources": [
         {
-            "type": "file",
+            "type": "archive",
             "url": "https://files.pythonhosted.org/packages/e1/ca/2da205bb1baa9f86b9cc36145ab5435fbc50ee3cc136e4a90356dbbdc3d2/pykeepass-4.0.7.tar.gz",
             "sha256": "56ce2a1d22c204c838e6501796e0acce8ba9f50ade821111aaa1458f9d1a775e"
+        },
+        {
+            "type": "patch",
+            "path": "0001-Fix-composite-key-computation-for-BytesIO.patch"
         }
     ],
     "modules": [
