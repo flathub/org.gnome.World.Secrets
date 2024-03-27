@@ -1,0 +1,44 @@
+From fca73313b77d2c8ea32db8b21858745500c334ec Mon Sep 17 00:00:00 2001
+From: Jan-Michael Brummer <jan-michael.brummer1@volkswagen.de>
+Date: Tue, 26 Mar 2024 10:27:48 +0100
+Subject: [PATCH] Fix composite key computation for BytesIO
+
+In case a keyfile as BytesIO has been read before, the
+next read will be empty. We need to ensure that we
+are reading the data from the beginning.
+
+Add seek to start to fix it.
+---
+ pykeepass/kdbx_parsing/common.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/pykeepass/kdbx_parsing/common.py b/pykeepass/kdbx_parsing/common.py
+index 3973f61..1865bb4 100644
+--- a/pykeepass/kdbx_parsing/common.py
++++ b/pykeepass/kdbx_parsing/common.py
+@@ -13,6 +13,7 @@ import unicodedata
+ import zlib
+ import re
+ import codecs
++import io
+ from io import BytesIO
+ from collections import OrderedDict
+ import logging
+@@ -116,7 +117,13 @@ def compute_key_composite(password=None, keyfile=None):
+         password_composite = b''
+     # hash the keyfile
+     if keyfile:
+-        if hasattr(keyfile, "read"):
++        if (
++            isinstance(keyfile, io.BufferedIOBase)
++            or isinstance(keyfile, io.TextIOBase)
++            or isinstance(keyfile, io.RawIOBase)
++        ):
++            if keyfile.seekable():
++                keyfile.seek(0)
+             keyfile_bytes = keyfile.read()
+         else:
+             with open(keyfile, 'rb') as f:
+-- 
+2.44.0
+
