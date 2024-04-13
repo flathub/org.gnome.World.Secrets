@@ -1,44 +1,54 @@
-From fca73313b77d2c8ea32db8b21858745500c334ec Mon Sep 17 00:00:00 2001
-From: Jan-Michael Brummer <jan-michael.brummer1@volkswagen.de>
-Date: Tue, 26 Mar 2024 10:27:48 +0100
-Subject: [PATCH] Fix composite key computation for BytesIO
+From c67b8cfdd51d60b8ef479bfbdf064f54fe593ae8 Mon Sep 17 00:00:00 2001
+From: Jan-Michael Brummer <jan.brummer@tabos.org>
+Date: Tue, 9 Apr 2024 21:58:09 +0200
+Subject: [PATCH] Fix composite key computation for BytesIO (#388)
 
 In case a keyfile as BytesIO has been read before, the
 next read will be empty. We need to ensure that we
 are reading the data from the beginning.
 
 Add seek to start to fix it.
+
+Co-authored-by: Jan-Michael Brummer <jan-michael.brummer1@volkswagen.de>
 ---
- pykeepass/kdbx_parsing/common.py | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ pykeepass/kdbx_parsing/common.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/pykeepass/kdbx_parsing/common.py b/pykeepass/kdbx_parsing/common.py
-index 3973f61..1865bb4 100644
+index 3973f61..94eb58b 100644
 --- a/pykeepass/kdbx_parsing/common.py
 +++ b/pykeepass/kdbx_parsing/common.py
-@@ -13,6 +13,7 @@ import unicodedata
+@@ -9,11 +9,11 @@ from lxml import etree
+ from copy import deepcopy
+ import base64
+ from binascii import Error as BinasciiError
++import io
+ import unicodedata
  import zlib
  import re
  import codecs
-+import io
- from io import BytesIO
+-from io import BytesIO
  from collections import OrderedDict
  import logging
-@@ -116,7 +117,13 @@ def compute_key_composite(password=None, keyfile=None):
-         password_composite = b''
+ 
+@@ -117,6 +117,8 @@ def compute_key_composite(password=None, keyfile=None):
      # hash the keyfile
      if keyfile:
--        if hasattr(keyfile, "read"):
-+        if (
-+            isinstance(keyfile, io.BufferedIOBase)
-+            or isinstance(keyfile, io.TextIOBase)
-+            or isinstance(keyfile, io.RawIOBase)
-+        ):
-+            if keyfile.seekable():
+         if hasattr(keyfile, "read"):
++            if hasattr(keyfile, "seekable") and keyfile.seekable():
 +                keyfile.seek(0)
              keyfile_bytes = keyfile.read()
          else:
              with open(keyfile, 'rb') as f:
+@@ -183,7 +185,7 @@ class XML(Adapter):
+ 
+     def _decode(self, data, con, path):
+         parser = etree.XMLParser(remove_blank_text=True)
+-        return etree.parse(BytesIO(data), parser)
++        return etree.parse(io.BytesIO(data), parser)
+ 
+     def _encode(self, tree, con, path):
+         return etree.tostring(tree)
 -- 
 2.44.0
 
