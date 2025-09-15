@@ -5,21 +5,20 @@
         "pip3 install --verbose --exists-action=i --ignore-installed --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pykeepass\""
     ],
     "sources": [
-        "pykeepass-build-sources.json",
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/a4/6a/e8a041599e78b6b3752da48000b14c8d1e8a04ded09c88c714ba047f34f5/argon2_cffi-23.1.0-py3-none-any.whl",
-            "sha256": "c670642b78ba29641818ab2e68bd4e6a78ba53b7eff7b4c3815ae16abf91c7ea"
+            "url": "https://files.pythonhosted.org/packages/4f/d3/a8b22fa575b297cd6e3e3b0155c7e25db170edf1c74783d6a31a2490b8d9/argon2_cffi-25.1.0-py3-none-any.whl",
+            "sha256": "fdc8b074db390fccb6eb4a3604ae7231f219aa669a2652e0f20e16ba513d5741"
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/b9/e9/184b8ccce6683b0aa2fbb7ba5683ea4b9c5763f1356347f1312c32e3c66e/argon2-cffi-bindings-21.2.0.tar.gz",
-            "sha256": "bb89ceffa6c791807d1305ceb77dbfacc5aa499891d2c55661c6459651fc39e3"
+            "url": "https://files.pythonhosted.org/packages/5c/2d/db8af0df73c1cf454f71b2bbe5e356b8c1f8041c979f505b3d3186e520a9/argon2_cffi_bindings-25.1.0.tar.gz",
+            "sha256": "b957f3e6ea4d55d820e40ff76f450952807013d361a65d7f28acc0acbf29229d"
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz",
-            "sha256": "f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76"
+            "url": "https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz",
+            "sha256": "1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824"
         },
         {
             "type": "file",
@@ -28,8 +27,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz",
-            "sha256": "4e109ca30d1edec1ac60cdbe341905dc3b8f55b16855e03a54aaf59e51ec8c6f"
+            "url": "https://files.pythonhosted.org/packages/c5/ed/60eb6fa2923602fba988d9ca7c5cdbd7cf25faa795162ed538b527a35411/lxml-6.0.0.tar.gz",
+            "sha256": "032e65120339d44cdc3efc326c9f660f5f7205f3a535c1fdbf898b29ea01fb72"
         },
         {
             "type": "file",
@@ -38,13 +37,19 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/31/a4/b03a16637574312c1b54c55aedeed8a4cb7d101d44058d46a0e5706c63e1/pycryptodomex-3.20.0.tar.gz",
-            "sha256": "7a710b79baddd65b806402e14766c721aee8fb83381769c27920f26476276c1e"
+            "url": "https://files.pythonhosted.org/packages/c9/85/e24bf90972a30b0fcd16c73009add1d7d7cd9140c2498a68252028899e41/pycryptodomex-3.23.0.tar.gz",
+            "sha256": "71909758f010c82bc99b0abf4ea12012c98962fbf0583c2164f8b84533c2e4da"
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/4e/3b/d1223d960213d0099e60686ced2958b7b76623c9d1bfaa983b144fd46f7f/pykeepass-4.1.0.post1-py3-none-any.whl",
-            "sha256": "e51fb95639ef01fb9bda679b29edabe896bb4def6958acabc4b9bf375d27571d"
-        }
+            "url": "https://files.pythonhosted.org/packages/ac/04/6cf0687780c68e7fb0525e7210ec5477987c0481904f600c2e5d81bbb7dd/pykeepass-4.1.1.post1-py3-none-any.whl",
+            "sha256": "4cfd54f376cb1f58dd8f11fbe7923282bc7dd97ffdf1bb622004a6e718bfe379"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/c3/c0/c33c8792c3e50193ef55adb95c1c3c2786fe281123291c2dbf0eaab95a6f/pyotp-2.9.0-py3-none-any.whl",
+            "sha256": "81c2e5865b8ac55e825b0358e496e1d9387c811e85bb40e71a3b29b288963612"
+        },
+        "pykeepass-build-sources.json"
     ]
 }

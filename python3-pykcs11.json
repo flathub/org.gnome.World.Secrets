@@ -17,22 +17,21 @@
                 "--disable-documentation"
             ],
             "cleanup": [
-                "/include",
+                "/bin",
                 "/bin/pcsc-spy",
+                "/include",
                 "/lib/libpcscspy*",
                 "/lib/pkg-config",
+                "/sbin",
+                "/sbin/pcscd",
                 "/share/doc",
                 "/share/man"
-            ],
-            "post-install": [
-                "rm /app/sbin/pcscd",
-                "rmdir /app/sbin || true"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pcsclite.apdu.fr/files/pcsc-lite-2.3.0.tar.xz",
-                    "sha256": "1acca22d2891d43ffe6d782740d32e78150d4fcc99e8a3cc763abaf546060d3d"
+                    "url": "https://pcsclite.apdu.fr/files/pcsc-lite-2.3.3.tar.xz",
+                    "sha256": "cdff7d7153a0b37aa74e26dfec89ec7dc5c5286aa21b91b903e38739d227e8e7"
                 }
             ]
         },
@@ -45,22 +44,31 @@
                 "--disable-tests"
             ],
             "cleanup": [
-                "/app/lib/share/bash-completion/completions"
+                "/bin",
+                "/share/opensc",
+                "/lib/share/bash-completion/completions"
             ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://github.com/OpenSC/OpenSC/releases/download/0.26.1/opensc-0.26.1.tar.gz",
                     "sha256": "f16291a031d86e570394762e9f35eaf2fcbc2337a49910f3feae42d54e1688cb"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/3316.patch"
                 }
             ]
         },
         {
             "name": "swig",
             "buildsystem": "autotools",
+            "config-opts": [
+                "--without-alllang",
+                "--without-pcre"
+            ],
             "cleanup": [
-                "/bin",
-                "/share"
+                "*"
             ],
             "sources": [
                 {
@@ -72,11 +80,17 @@
         },
         {
             "name": "pcsc-tools",
+            "cleanup": [
+                "*"
+            ],
+            "config-opts": [
+                "--disable-gettext"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pcsc-tools.apdu.fr/pcsc-tools-1.7.2.tar.bz2",
-                    "sha256": "fd6fcc25e8140f613b3bf44b02eda4a8a429ee4939fb777f474e2c829f7b472c"
+                    "url": "https://pcsc-tools.apdu.fr/pcsc-tools-1.7.3.tar.bz2",
+                    "sha256": "c3b6d2b7a40bc066ebb8cd2512fb42e2b787a5c491a5715b8741743f4edb8cc2"
                 }
             ]
         },
