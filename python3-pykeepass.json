@@ -52,8 +52,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/f7/13/e674e9f67ae0d49e6282d6396b4ecfb4c17e4c33245341ab6a709deb9671/pykeepass-4.2.0-py3-none-any.whl",
-            "sha256": "8d6100788422eb8a43710b227fde873f7684d08bf0117eb43c8ae346644b086d"
+            "url": "https://files.pythonhosted.org/packages/ac/04/6cf0687780c68e7fb0525e7210ec5477987c0481904f600c2e5d81bbb7dd/pykeepass-4.1.1.post1-py3-none-any.whl",
+            "sha256": "4cfd54f376cb1f58dd8f11fbe7923282bc7dd97ffdf1bb622004a6e718bfe379"
         },
         {
             "type": "file",
